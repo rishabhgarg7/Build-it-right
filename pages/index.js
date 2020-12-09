@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import {useState} from 'react'
-import CheckSvg from '../components/CheckSvg'
 
 export default function Home() {
 
