@@ -19,7 +19,7 @@ export default function SignupForm() {
         }
         const response = await fetch(`/api/subscribe`, header_body)
         if (!response.ok){
-            const errorMessage = (responseData && responseData.message) || response.statusText;
+            const errorMessage = (response && response.message) || response.statusText;
             throw new Error(errorMessage)
         }
         const data = await response.json();
@@ -57,14 +57,20 @@ export default function SignupForm() {
         <div className='flex flex-col items-center'>
             <h4 className='mt-6'>Subscribe below to get notified!</h4>
             <form className={formClassnames} onSubmit={handleSubmit}>
-                <div className='w-full flex border-2 border-gray-200 focus-within:border-black rounded-lg p-2'>
-                    <input value={email} onChange={handleEmailChange} name="email-address" disabled={isLoading} className={inputClassnames} type="email" id="email-address" placeholder="elonmusk@tesla.com" />
-                    <button type='submit' disabled={isLoading} className={buttonClassname}>
-                        {
-                            isLoading? 'Subscribing..': isError?'Could not subscribe': isSuccess? 'Subscribed': 'Sign up'
-                        }
-                    </button>
-                </div>
+                {
+                    isSuccess?
+                    <p className='p-2 text-xl bg-green-100 rounded-lg text-green-700'>Subscribed.</p>
+                    :
+                    <div className='w-full flex border-2 border-gray-200 focus-within:border-black rounded-lg p-2'>
+                        <input value={email} onChange={handleEmailChange} name="email-address" disabled={isLoading} className={inputClassnames} type="email" id="email-address" placeholder="elonmusk@tesla.com" />
+                        <button type='submit' disabled={isLoading} className={buttonClassname}>
+                            {
+                                isLoading? 'Subscribing..': isError?'Could not subscribe': isSuccess? 'Subscribed': 'Sign up'
+                            }
+                        </button>
+                    </div>
+                }
+
             </form>
         </div>
     )

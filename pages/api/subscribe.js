@@ -13,7 +13,8 @@ export default async(req, res) => {
       body: JSON.stringify({"api_key": process.env.CONVERTKIT_API_KEY, "email": email, "tags": tags })});
   
     if (response.status >=400){
-      return res.status(400).json({error:"Something went wrong while subscribing to API"})
+      const errorMessage = (response && response.message) || response.statusText;
+      return res.status(400).json({error:`Something went wrong while subscribing to API: ${errorMessage}`})
     }
   
     res.status(201).json({'message':'Subscribed.'})
