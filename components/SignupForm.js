@@ -1,21 +1,33 @@
 import React, {useState} from 'react'
 import classNames from "classnames";
+import { useMutation } from 'react-query';
 
 export default function SignupForm() {
-    const isLoading = true
     const [email, setEmail] = useState('')
+    const handleEmailChange = (evt) => {
+        setEmail(evt.target.value)
+      }
 
     const subscribe = async ({ email }) => {
-      const res = await fetch(`/api/subscribe?email=${email}`);
+
+        const header_body = {
+            method: 'POST',
+            body: JSON.stringify({email:email,tags:'builditright'}),
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'}
+        }
+        const response = await fetch(`/api/subscribe`, header_body)
+        const data = await response.json();
+        return data
+ 
    };
+
+   const [onSubmitData, {isLoading, isSuccess, isError}] = useMutation(subscribe)
    
-    const handleEmailChange = (evt) => {
-      setEmail(evt.target.value)
-    }
-  
     const handleSubmit = (evt) => {
       evt.preventDefault()
-      subscribe({email});
+      onSubmitData({email})
     }
 
     const formClassnames = classNames({
@@ -42,7 +54,7 @@ export default function SignupForm() {
                     <input value={email} onChange={handleEmailChange} name="email-address" disabled={isLoading} className={inputClassnames} type="email" id="email-address" placeholder="elonmusk@tesla.com" />
                     <button type='submit' disabled={isLoading} className={buttonClassname}>
                         {
-                            isLoading? 'Processing': 'Sign up'
+                            isLoading? 'Subscribing..': isError?'Could not subscribe': isSuccess? 'Subscribed': 'Sign up'
                         }
                     </button>
                 </div>
