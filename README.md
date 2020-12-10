@@ -1,6 +1,7 @@
 ## Learnings:
 
 - I learned how React-Query library for data fetchning and mutations and the working principle behind react query: state while revalidate.
+- I learned how to build good looking forms that also enhance user experience by showing loading, success and error states.
 - I learned how to set styles/classes dynamically in tailwindcss using Classnames package.
 - I learned how to create API routes in nextJS that works as serverless functions(Get fired only when they're hit.)
 
