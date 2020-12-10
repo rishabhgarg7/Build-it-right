@@ -7,9 +7,7 @@ export default async(req, res) => {
   }
 
   try {
-    console.log(process.env.CONVERTKIT_API_URL)
     const endpoint = `${process.env.CONVERTKIT_API_URL}/forms/${process.env.CONVERTKIT_FORM_ID}/subscribe`
-    console.log({endpoint})
     const response = await fetch(endpoint, {
       method: 'POST',
       headers: {'Content-Type': 'application/json; charset=utf-8'},

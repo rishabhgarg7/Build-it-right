@@ -1,17 +1,8 @@
 import Head from 'next/head'
-import {useState} from 'react'
+import SignupForm from '../components/SignupForm'
 
 export default function Home() {
 
-  const [email, setEmail] = useState('')
-  const handleEmailChange = (evt) => {
-    setEmail(evt.target.value)
-  }
-  const handleSubmit = (evt) => {
-    evt.preventDefault()
-
-    console.log(email)
-  }
   return (
     <div className={''}>
       <Head>
@@ -64,13 +55,7 @@ export default function Home() {
         <hr />
         <div className='cta-section mt-8 flex flex-col items-center'>
           <h2 className='text-2xl text-center'>We're building tools for <span className='font-bold' style={{color:"#124a63"}}>entrepreneurs</span> like you.</h2>
-          <h4 className='mt-6'>Subscribe below to get notified!</h4>
-          <form className='mt-1 mb-6' onSubmit={handleSubmit}>
-            <div className='w-full flex border-2 border-gray-200 focus-within:border-black rounded-lg p-2'>
-              <input value={email} onChange={handleEmailChange} name="email-address" className=" flex-grow mt-1 p-2 border-none appearance-none focus:outline-none" type="email" id="email-address" placeholder="elonmusk@tesla.com" />
-              <button type='submit' className='ml-2 border-2 border-gray-200 p-2 rounded-lg hover:bg-black hover:text-white focus:outline-none  focus:bg-black focus:text-white'>Sign Up</button>
-            </div>
-          </form>
+          <SignupForm />
         </div>
       </main>
     </div>
