@@ -1,6 +1,7 @@
 export default async(req, res) => {
 
   const { email, tags } = req.body;
+  console.log({email,tags})
 
   if (!email) {
      return res.status(400).json({ error: "Email is required" }) ;

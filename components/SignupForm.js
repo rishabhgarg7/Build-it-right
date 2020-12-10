@@ -26,7 +26,7 @@ export default function SignupForm() {
    const [onSubmitData, {isLoading, isSuccess, isError}] = useMutation(subscribe)
 //    const [onSubmitData, {isLoading, isSuccess, isError}] = useMutation((email) => axios.post('/api/subscribe',email), )
 //    const [onSubmitData, {isLoading, isSuccess, isError}] = useMutation((email) => axios.post('/api/subscribe',email).then((res)=>res.data), )
-
+   console.log({isError,isLoading,isSuccess})
 
    
     const handleSubmit = (evt) => {
