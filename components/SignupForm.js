@@ -12,7 +12,7 @@ export default function SignupForm() {
 
         const header_body = {
             method: 'POST',
-            body: JSON.stringify({email:email,tags:'builditright'}),
+            body: JSON.stringify({email:email,tags:['builditright']}),
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json'}
