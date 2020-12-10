@@ -18,6 +18,10 @@ export default function SignupForm() {
               'Content-Type': 'application/json'}
         }
         const response = await fetch(`/api/subscribe`, header_body)
+        if (!response.ok){
+            const errorMessage = (responseData && responseData.message) || response.statusText;
+            throw new Error(errorMessage)
+        }
         const data = await response.json();
         return data
  
