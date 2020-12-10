@@ -8,7 +8,9 @@
 
 #### Some minor learnings:
 
-In this project, I learned about **focus-within** utility of tailwindcss. What it is? This utility is applied on parent element and it activated the focus style for parent element whenever any child element gets focussed.
+- In this project, I learned about **focus-within** utility of tailwindcss. What it is? This utility is applied on parent element and it activated the focus style for parent element whenever any child element gets focussed.
+- Also learned about **cursor-not-allowed** utility of tailwindcss. This utility is used to indicate that the element can't be interacted with.
+- I also learned about how **outline-none** utility affects accessibility for bad. And why we must set custom focus: border utilities to make the element accessible.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
